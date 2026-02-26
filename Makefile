@@ -1,4 +1,4 @@
-.PHONY: venv deps non-arin us build clean
+.PHONY: venv deps non-arin us apnic-in-us build clean
 
 venv:
 	python3 -m venv venv
@@ -13,8 +13,11 @@ non-arin:
 us: deps
 	./venv/bin/python ./generate-geolite-us.py
 
-build: non-arin us
-	@echo "Done. Outputs: non-arin.rsc geo-allow-us.rsc"
+apnic-in-us: deps
+	./venv/bin/python ./generate-apnic-in-us.py
+
+build: non-arin us apnic-in-us
+	@echo "Done. Outputs: non-arin.rsc geo-allow-us.rsc apnic-in-us.rsc"
 
 clean:
-	rm -f non-arin.rsc geo-allow-us.rsc
+	rm -f non-arin.rsc geo-allow-us.rsc apnic-in-us.rsc delegated-apnic-latest
