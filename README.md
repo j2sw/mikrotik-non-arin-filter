@@ -17,9 +17,20 @@ Drop inbound traffic to routers from non-ARIN IPv4 space.
 
 ## Import Into MikroTik
 
-Upload non-arin.rsc to your router:
-
+Upload to your mikrotik
 /import file-name=non-arin.rsc
+/import file-name=geo-allow-us.rsc
+/import file-name=apnic-in-us.rsc
+
+The verify counts
+/ip firewall address-list print count-only where list="non-arin"
+/ip firewall address-list print count-only where list="geo-allow-us"
+/ip firewall address-list print count-only where list="apnic-in-us"
+
+4) Don’t lock yourself out
+Before you add the drop rule, do these two things:
+Confirm you have an out-of-band path (console, VPN from a known IP, or local LAN access).
+Add and test mgmt-allow and make sure it matches your real source IP.
 
 ## Example Firewall Rule
 
