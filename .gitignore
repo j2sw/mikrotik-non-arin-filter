@@ -1,1 +1,4 @@
+geolite2/
+*.zip
+venv/
 .DS_Store
