@@ -26,7 +26,9 @@ On RouterOS v7, the actual commands usually look like this, run from terminal af
 ## Raw Firewall Rules
 /ip firewall raw
 add chain=prerouting in-interface-list=WAN dst-address-type=local src-address-list=apnic-in-us action=accept comment="RAW: allow APNIC-in-US to router"
+
 add chain=prerouting in-interface-list=WAN dst-address-type=local src-address-list=geo-allow-us action=accept comment="RAW: allow US Geo to router"
+
 add chain=prerouting in-interface-list=WAN dst-address-type=local src-address-list=non-arin action=drop comment="RAW: drop non-ARIN to router"
 
 This geofences only traffic destined to the router.
